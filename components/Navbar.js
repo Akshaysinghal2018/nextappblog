@@ -12,10 +12,16 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const isLoggedIn = localStorage.getItem("user") !== null;
-  console.log(localStorage.getItem("user"))
+  // const isLoggedIn = localStorage.getItem("user") !== null;
+  
+  const isLoggedIn = true;
+  // console.log(localStorage.getItem("user"))
 
-  const tempusernav = localStorage.getItem("user") === null ? [{ href: "/user/signup", text: "sign up" },{ href: "/user/signin", text: "sign in" }] : [
+  // const tempusernav = localStorage.getItem("user") === null ? [{ href: "/user/signup", text: "sign up" },{ href: "/user/signin", text: "sign in" }] : [
+  //   { href: "/user/dashboard", text: "dashboard" },{ href: "/posts/add", text: "Create Post" }
+  // ];
+
+  const tempusernav = true ? [{ href: "/user/signup", text: "sign up" },{ href: "/user/signin", text: "sign in" }] : [
     { href: "/user/dashboard", text: "dashboard" },{ href: "/posts/add", text: "Create Post" }
   ];
 
@@ -51,7 +57,7 @@ const Navbar = () => {
                   isLoggedIn && <Link
                   onClick={() => { 
                     toast.success("logged out"); 
-                    localStorage.removeItem("user"); 
+                    // localStorage.removeItem("user"); 
                     redirect("/");
                   }}
                   href={""}

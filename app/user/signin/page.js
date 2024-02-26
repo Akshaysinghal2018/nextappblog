@@ -21,7 +21,7 @@ const SignIn = () => {
       signInWithEmailAndPassword(auth,data.email,data.password)
       .then(authUser => {
         console.log("Success. The user is logged In")
-        localStorage.setItem("user",authUser.user);
+        // localStorage.setItem("user",authUser.user);
         toast.success("Success. The user is logged In")
         window.location.replace("/");
         // router.push("/logged_in");
