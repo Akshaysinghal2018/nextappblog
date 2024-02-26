@@ -12,18 +12,31 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // const isLoggedIn = localStorage.getItem("user") !== null;
   
-  const isLoggedIn = true;
+  let isLoggedIn = true;
+  
+  if (typeof window !== 'undefined') {
+    // Perform localStorage action
+    isLoggedIn = localStorage.getItem("user") !== null;
+    // const item = localStorage.getItem('key')
+  }
   // console.log(localStorage.getItem("user"))
 
   // const tempusernav = localStorage.getItem("user") === null ? [{ href: "/user/signup", text: "sign up" },{ href: "/user/signin", text: "sign in" }] : [
   //   { href: "/user/dashboard", text: "dashboard" },{ href: "/posts/add", text: "Create Post" }
   // ];
 
-  const tempusernav = true ? [{ href: "/user/signup", text: "sign up" },{ href: "/user/signin", text: "sign in" }] : [
+  let tempusernav = true ? [{ href: "/user/signup", text: "sign up" },{ href: "/user/signin", text: "sign in" }] : [
     { href: "/user/dashboard", text: "dashboard" },{ href: "/posts/add", text: "Create Post" }
   ];
+
+  if (typeof window !== 'undefined') {
+    // Perform localStorage action
+    tempusernav = localStorage.getItem("user") === null ? [{ href: "/user/signup", text: "sign up" },{ href: "/user/signin", text: "sign in" }] : [
+    { href: "/user/dashboard", text: "dashboard" },{ href: "/posts/add", text: "Create Post" }
+  ];
+    // const item = localStorage.getItem('key')
+  }
 
   const navLinks = [
     { href: "/", text: "Home" },
@@ -57,7 +70,11 @@ const Navbar = () => {
                   isLoggedIn && <Link
                   onClick={() => { 
                     toast.success("logged out"); 
-                    // localStorage.removeItem("user"); 
+                    if (typeof window !== 'undefined') {
+                      // Perform localStorage action
+                      localStorage.removeItem("user"); 
+                      // const item = localStorage.getItem('key')
+                    }
                     redirect("/");
                   }}
                   href={""}
