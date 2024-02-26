@@ -21,5 +21,8 @@ const storage = getStorage(app);
 const db = getFirestore(app);
 export const auth = getAuth(app);
 
+import fb from "firebase/app"
+export const firebase = !fb?.apps.length ? fb?.initializeApp(firebaseConfig) : fb?.app()
 
-export { db, storage };
+
+export { app,db, storage };

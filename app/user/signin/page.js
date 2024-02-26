@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
+import {firebase} from "../../../firebaseConfig"
 
 const SignIn = () => {
   // const router = useRouter();
